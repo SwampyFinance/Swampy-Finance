@@ -13,16 +13,15 @@ const Btn = styled.div`
   border-radius: 10px;
   margin: 10px 0px 10px 0px;
   cursor: pointer;
-  box-shadow: rgb(0 0 0 / 59%) 6px 6px 20px 6px;
   padding: 10px 20px 10px 20px;
   &:hover {
-    background-color: #ebc489;
-    border-color: #ebc489;
+    background-color: #93c572;
+    border-color: #93c572;
   }
 
   &:active {
-    background-color: #ebc489;
-    border-color: #ebc489;
+    background-color: #93c572;
+    border-color: #93c572;
   }
 
   @media (min-width: 768px) {
