@@ -16,7 +16,7 @@ const CardContent = styled.div`
 const CardTitle = styled.h2`
   width: 100%;
   margin: 0px;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 500;
   line-height: 1.334;
   color: rgb(23, 33, 94);
@@ -30,18 +30,18 @@ const CardDescription = styled.div`
   align-content: center;
   flex-direction: row;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 5px;
 `;
 
 const CardDescText = styled.h2`
-  margin-bottom: 5px;
-  font-size: x-large;
+  margin-bottom: 2px;
+  font-size: large;
 `;
 
 const CardDescText2 = styled.h2`
   display: flex;
-  margin-bottom: 5px;
-  font-size: x-large;
+  margin-bottom: 2px;
+  font-size: large;
   justify-content: flex-end;
 `;
 
@@ -51,7 +51,7 @@ const BottomCard = () => {
       <CardTitle>Hotel Information</CardTitle>
       <CardDescription>
         <div>
-          <CardDescText>Daily Return</CardDescText>
+          <CardDescText>Daily Income</CardDescText>
           <CardDescText>APR</CardDescText>
           <CardDescText>Dev Fee</CardDescText>
         </div>
