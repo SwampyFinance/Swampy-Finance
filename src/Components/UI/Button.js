@@ -22,14 +22,13 @@ const ButtonContainer = styled.button`
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  background-color: rgb(244, 181, 45);
+  background-color: rgb(96, 168, 48);
   border-radius: 8px;
   font-weight: 400;
   font-size: 1.2rem;
   padding: 10px;
   min-width: 138px;
-  box-shadow: rgb(0 0 0 / 59%) 6px 6px 20px 6px;
-  color: rgb(23, 33, 94);
+  color: rgb(0, 0, 0);
   display: none;
   margin: -24px auto 48px;
   width: 95%;
