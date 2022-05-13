@@ -48,7 +48,7 @@ const CardDescText2 = styled.h2`
 const BottomCard = () => {
   return (
     <CardContent>
-      <CardTitle>Nutrition Facts</CardTitle>
+      <CardTitle>Hotel Information</CardTitle>
       <CardDescription>
         <div>
           <CardDescText>Daily Return</CardDescText>
@@ -56,9 +56,9 @@ const BottomCard = () => {
           <CardDescText>Dev Fee</CardDescText>
         </div>
         <div>
-          <CardDescText2>8%</CardDescText2>
-          <CardDescText2>2,920%</CardDescText2>
-          <CardDescText2>3%</CardDescText2>
+          <CardDescText2>Up to 8%</CardDescText2>
+          <CardDescText2>Up to 2,920%</CardDescText2>
+          <CardDescText2>5%</CardDescText2>
         </div>
       </CardDescription>
     </CardContent>
