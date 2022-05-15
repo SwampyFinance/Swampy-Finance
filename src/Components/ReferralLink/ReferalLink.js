@@ -77,7 +77,7 @@ const ReferalLink = (props) => {
         />
       </CardInputContainer>
       <CardDescription>
-        Earn 12% of the BNB used to bake beans from anyone who uses your
+        Earn 1.25% of the BNB used to manage your Swamps from anyone who uses your
         referral.
       </CardDescription>
     </CardContent>
