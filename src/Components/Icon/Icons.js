@@ -24,11 +24,11 @@ const Icon = () => {
       <a href="https://t.me/BakedBeansMiner" target="__blank">
         <IconComponent src={Bscscan} alt="bscscan" />
       </a>
-      <a href="https://t.me/BakedBeansMiner" target="__blank">
+      <a href="https://t.me/SwampyFinance" target="__blank">
         <IconComponent src={Telegram} alt="bscscan" />
       </a>
-      <a href="https://twitter.com/BakedBeansMiner" target="__blank">
-        <IconComponent src={Twitter} alt="bscscan" />
+      <a href="https://discord.gg/WUfHq4Wu6n" target="__blank">
+        <IconComponent src={Discord} alt="bscscan" />
       </a>
     </IconContainer>
   );
