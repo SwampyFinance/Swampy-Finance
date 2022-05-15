@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Bscscan from "./bscscan.png";
-import Twitter from "./twitter.png";
+import Discord from "./discord.png";
 import Telegram from "./telegram.png";
 
 const IconContainer = styled.div`
