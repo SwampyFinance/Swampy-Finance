@@ -1,63 +1,46 @@
 .bn-logo-link {
-  position: absolute;
-  left: 1.5rem;
+  margin-left: 1.5rem;
 }
 
-.bn-logo-demo {
-  width: 16rem;
-}
-
-.user-info-container {
+.header-container {
   display: flex;
-  justify-content: center;
   align-items: center;
-  background: rgba(255, 255, 255, 0.6);
-  min-height: 4rem;
+  justify-content: space-between;
+  min-height: 5rem;
   margin: 0.25rem;
-  border: 1px solid #eeeeee;
-  border-radius: 4px;
 }
 
-.user-info {
-  margin: auto;
+.header-logo {
   display: flex;
-  justify-content: center;
   align-items: center;
-  flex-flow: row wrap;
-  border-radius: 4px;
 }
 
-.user-info span {
+.bn-logo-context {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.25rem 1rem;
-  position: relative;
-  margin: 1rem;
-  border: 1px solid black;
-  border-radius: 12px;
-  margin: 0.25rem 1rem;
+  flex-direction: column;
+  color: white;
 }
 
-.user-info .user-address {
-  max-width: 92%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: inline-block;
+.bn-logo-context .bg-context {
+  font-size: 24px;
+  line-height: 29.05px;
+  font-weight: 700;
 }
 
-.user-avatar {
-  width: 32px;
-  border-radius: 100%;
-  border: 1px solid black;
-  left: 0;
-  transform: translate(-50%, 0);
-  position: absolute;
+.bn-logo-context .sm-context {
+  font-size: 12px;
+  line-height: 14.52px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.3px;
+}
+
+.header-connect {
+  margin-right: 3rem;
 }
 
 @media screen and (max-width: 1395px) {
-  .user-info-container {
+  .header-container {
     flex-direction: column;
   }
 

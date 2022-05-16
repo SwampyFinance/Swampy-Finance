@@ -1,0 +1,20 @@
+.ShowPanel {
+  display: flex;
+  justify-content: space-between;
+  align-items: space-between;
+  flex-direction: column;
+  font-weight : 700;
+  line-height: 19.36px;
+  font-size: 16px;
+  height: 70px;
+}
+
+.ShowPanel .Description {
+  color: black;
+}
+
+.ShowPanel .Number {
+  color: white;
+  line-height: 27.36px;
+  font-size: 24px;
+}

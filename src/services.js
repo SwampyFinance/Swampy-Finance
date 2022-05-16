@@ -1,7 +1,7 @@
 import Notify from 'bnc-notify'
 
-import blocknativeLogo from './icons/blocknative-logo'
-import blocknativeIcon from './icons/blocknative-icon'
+import blocknativeLogo from './assets/icons/blocknative-logo'
+import blocknativeIcon from './assets/icons/blocknative-icon'
 
 import { init } from '@web3-onboard/react'
 import injectedModule from '@web3-onboard/injected-wallets'
