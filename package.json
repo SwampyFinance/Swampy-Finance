@@ -3,6 +3,7 @@
   "version": "0.19.1",
   "dependencies": {
     "@craco/craco": "^5.8.3",
+    "@reduxjs/toolkit": "^1.8.1",
     "@web3-onboard/coinbase": "^2.0.2",
     "@web3-onboard/fortmatic": "^2.0.2",
     "@web3-onboard/gnosis": "^2.0.1",
@@ -20,8 +21,13 @@
     "ethers": "^5.5.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^8.0.1",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "3.1.1",
-    "vconsole": "^3.3.4"
+    "redux": "^4.2.0",
+    "redux-thunk": "^2.4.1",
+    "vconsole": "^3.3.4",
+    "web3": "^1.7.3"
   },
   "scripts": {
     "setup-staging-env": "yarn upgrade '@web3-onboard/coinbase@next' '@web3-onboard/fortmatic@next' '@web3-onboard/gnosis@next' '@web3-onboard/injected-wallets@next' '@web3-onboard/keepkey@next' '@web3-onboard/keystone@next' '@web3-onboard/ledger@next' '@web3-onboard/magic@next' '@web3-onboard/portis@next' '@web3-onboard/react@next' '@web3-onboard/torus@next' '@web3-onboard/trezor@next'",

@@ -19,7 +19,6 @@ const Footer = () => {
           >
             <p> </p>
           </a>
-          <span>Github</span>
         </span>
         <span className="social-links">
           <a
@@ -31,7 +30,6 @@ const Footer = () => {
           >
             <p> </p>
           </a>
-          <span>Discord</span>
         </span>
         <span className="social-links">
           <a
@@ -43,7 +41,6 @@ const Footer = () => {
           >
             <p> </p>
           </a>
-          <span>Twitter</span>
         </span>
       </section>
     </section>

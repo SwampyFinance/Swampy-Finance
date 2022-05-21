@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from 'react'
 import VConsole from 'vconsole'
-import './App.css'
 import Header from './views/Header/Header.js'
 import Footer from './views/Footer/Footer.js'
 
 import ShowPanel from './components/ShowPanel/ShowPanel.js'
-import InputPanel from './components/InputPanel/InputPanel.js'
+import ActionPanel from './components/ActionPanel/ActionPanel.js'
 import Context from './components/Context/Context.js'
+import './App.css'
 
 if (window.innerWidth < 700) {
   new VConsole()
 }
 
 const App = () => {
+  const [needHeaderUpdate, setNeedHeaderUpdate] = useState(false);
+  const [actionType, setActionType] = useState(0);
+
+
   return (
     <main>
-      <Header/>
+      <Header doActionTrigger = {setNeedHeaderUpdate} param = {actionType}/>
       <section className="main">
         <div className="main-content">
           {/* Information container */}
@@ -56,7 +60,25 @@ const App = () => {
               ></ShowPanel>
             </div>
 
-            <div className="values-container" style={{marginTop: '30px'}}>
+            <div className="values-container" style={{marginTop: '30px', padding: '0px 20px'}}>
+              <ActionPanel
+                title="Deposit BNB: [5.6]"
+                actiontitle="Create Swamp"
+                actionType="1"
+              ></ActionPanel>
+              <ActionPanel
+                title="Compound Tenants:"
+                actiontitle="Hire Landlords"
+                actionType="2"
+              ></ActionPanel>
+              <ActionPanel
+                title="Sell Rewards:"
+                actiontitle="Collect Rent"
+                actionType="3"
+              ></ActionPanel>
+            </div>
+
+            {/* <div className="values-container" style={{marginTop: '30px'}}>
               <InputPanel
                 placeholder="0.5"
                 title="Create Swamp:"
@@ -72,7 +94,7 @@ const App = () => {
                 title="Collect Rent:"
                 description="(Sell)"
               ></InputPanel>
-            </div>
+            </div> */}
 
             <div style={{marginTop: '20px'}}></div>
             <Context
@@ -94,6 +116,11 @@ const App = () => {
               title="Referral Rewards: [Place Referral BNB here]"
               description="The total amount you’ve received from referrals"
             ></Context>
+
+            <div className="Referral">
+              <div>Enter Referral Here: </div>
+              <input></input>
+            </div>
           </div>
         </div>
       </section>

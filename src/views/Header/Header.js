@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 
 import { useConnectWallet, useSetChain, useWallets } from '@web3-onboard/react'
 import { ethers } from 'ethers'
 import { initWeb3Onboard, initNotify } from '../../services'
+import { contractAddress, contractAbi, getWeb3 } from '../../contracts'
+import { useDispatch } from 'react-redux'
+import { headerActions } from '../../actions'
+import swal from 'sweetalert';
 
 import BNLogo from "../../assets/icons/Swampy Finance LOGO-B1 1.svg"
 import './Header.css'
@@ -10,74 +15,128 @@ import './Header.css'
 let provider;
 
 const Header = () => {
-
+  const {methodCallType} = useSelector((state) => state.rootReducer.header_reducer);
   const [{ wallet }, connect, disconnect ] = useConnectWallet();
-  const [ {chains, connectedChain, settingChain}, setChain] = useSetChain();
-  const connectedWallets = useWallets();
-
+  const [currentAccount, setCurrentAccount] = useState('');
+  const [swampyContract, setSwampyContract] = useState();
   const [web3Onboard, setWeb3Onboard] = useState(null)
   const [notify, setNotify] = useState(null)
+  const connectedWallets = useWallets();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setWeb3Onboard(initWeb3Onboard)
     setNotify(initNotify())
   }, [])
 
-  
-  // useEffect(() => {
-  //   if (!connectedWallets.length) return
+  useEffect(() => {
+    if(methodCallType != 0 && currentAccount == ''){
+      swal("Warning!", "Please connect wallet.", "warning");
+      return;
+    }
+    console.log(swampyContract);
+    
+    switch(parseInt(methodCallType))
+    {
+      case 1: // Create Swamp 
+        try{
+          swampyContract.createSwamp(currentAccount)
+          .then(res=>{
+            console.log(res);
+            console.log("Success Call Create Swamp");
+            swal("Success!", "Create Swamp Successed", "success");
 
-  //   console.log(connectedWallets);
+          }).catch(err=>{
+            if(err.code == "4001")
+              swal("Cancelled!", "User denied transaction signature.", "warning");
 
-  //   const connectedWalletsLabelArray = connectedWallets.map(
-  //     ({ label }) => label
-  //   )
-  //   window.localStorage.setItem(
-  //     'connectedWallets',
-  //     JSON.stringify(connectedWalletsLabelArray)
-  //   )
-
-  //   // Check for Magic Wallet user session
-  //   if (connectedWalletsLabelArray.includes('Magic Wallet')) {
-  //     const [magicWalletProvider] = connectedWallets.filter(
-  //       provider => provider.label === 'Magic Wallet'
-  //     )
-  //     async function setMagicUser() {
-  //       try {
-  //         const { email } =
-  //           await magicWalletProvider.instance.user.getMetadata()
-  //         const magicUserEmail = localStorage.getItem('magicUserEmail')
-  //         if (!magicUserEmail || magicUserEmail !== email)
-  //           localStorage.setItem('magicUserEmail', email)
-  //       } catch (err) {
-  //         throw err
-  //       }
-  //     }
-  //     setMagicUser()
-  //   }
-  // }, [connectedWallets, wallet])
+            console.log("Some error occured during call Create Swamp contract method: ", err);
+          })
+        } catch(err) {
+          console.log("Some error occured in contract:", err);
+        }
+        break;
+      case 2: // Hire Landlords
+        try{
+          swampyContract.hireLandlord(currentAccount)
+          .then(res=>{
+            console.log(res);
+            // swal("Success!", "Hire Landlords Successed", "success");
+          }).catch(err=>{
+            if(err.code == "4001")
+              swal("Cancelled!", "User denied transaction signature.", "warning");
+            console.log("Some error occured during call Hire Landlords contract method: ", err);
+          })
+        } catch(err) {
+          console.log("Some error occured in contract:", err);
+        }
+        break;
+      case 3: // Collect Rent
+        try{
+          swampyContract.collectRent()
+          .then(res=>{
+            console.log(res);
+            // swal("Success!", "Collect Rent Successed", "success");
+          }).catch(err=>{
+            if(err.code == "4001")
+              swal("Cancelled!", "User denied transaction signature.", "warning");
+            console.log("Some error occured during call Collect Rent contract method: ", err);
+          })
+        } catch(err) {
+          console.log("Some error occured in contract:", err);
+        }
+        break;
+    }
+    setTimeout(()=>{
+      dispatch(headerActions.headerUpdateTrigger(0));
+    })
+  }, [methodCallType]);
 
   useEffect(() => {
+    if (!connectedWallets.length) return
+
+    const connectedWalletsLabelArray = connectedWallets.map(
+      ({ label }) => label
+    )
+    window.localStorage.setItem(
+      'connectedWallets',
+      JSON.stringify(connectedWalletsLabelArray)
+    )
+
+  }, [connectedWallets, wallet])
+
+  useEffect(() => {
+    try{
+      setCurrentAccount(wallet.accounts[0].address)
+    } catch {
+      setCurrentAccount('');
+    }
     if (!wallet?.provider) {
       provider = null
     } else {
-      provider = new ethers.providers.Web3Provider(wallet.provider, 'any')
+      provider = new ethers.providers.Web3Provider(wallet.provider, 'any');
+
+      const swampyContract = new ethers.Contract(
+        contractAddress,
+        contractAbi,
+        provider.getUncheckedSigner()
+      );
+      setSwampyContract(swampyContract);
     }
-  }, [wallet])
+  }, [wallet]);
 
-  // useEffect(() => {
-  //   const previouslyConnectedWallets = JSON.parse(
-  //     window.localStorage.getItem('connectedWallets')
-  //   )
+  useEffect(() => {
+    const previouslyConnectedWallets = JSON.parse(
+      window.localStorage.getItem('connectedWallets')
+    )
 
-  //   if (previouslyConnectedWallets?.length) {
-  //     async function setWalletFromLocalStorage() {
-  //       await connect({ autoSelect: previouslyConnectedWallets[0] })
-  //     }
-  //     setWalletFromLocalStorage()
-  //   }
-  // }, [web3Onboard, connect])
-
+    if (previouslyConnectedWallets?.length) {
+      async function setWalletFromLocalStorage() {
+        await connect({ autoSelect: previouslyConnectedWallets[0] })
+      }
+      setWalletFromLocalStorage()
+    }
+  }, [web3Onboard, connect])
 
   return (
     <header className="header-container">

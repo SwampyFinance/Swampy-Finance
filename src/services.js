@@ -17,7 +17,8 @@ import keepkeyModule from '@web3-onboard/keepkey'
 import gnosisModule from '@web3-onboard/gnosis'
 
 // Replace with your DApp's Infura ID
-const INFURA_ID = 'cea9deb6467748b0b81b920b005c10c1'
+// const INFURA_ID = 'cea9deb6467748b0b81b920b005c10c1'
+const INFURA_ID = '4a8574b14e614158b243e5e0c31eeea8';
 
 const networkId = 4
 const apiUrl = process.env.REACT_APP_API_URL
@@ -70,24 +71,24 @@ export const initWeb3Onboard = init({
     torus
   ],
   chains: [
-    {
-      id: '0x1',
-      token: 'ETH',
-      label: 'Ethereum',
-      rpcUrl: `https://mainnet.infura.io/v3/${INFURA_ID}`
-    },
-    {
-      id: '0x3',
-      token: 'tROP',
-      label: 'Ropsten',
-      rpcUrl: `https://ropsten.infura.io/v3/${INFURA_ID}`
-    },
-    {
-      id: '0x4',
-      token: 'rETH',
-      label: 'Rinkeby',
-      rpcUrl: `https://rinkeby.infura.io/v3/${INFURA_ID}`
-    },
+    // {
+    //   id: '0x1',
+    //   token: 'ETH',
+    //   label: 'Ethereum',
+    //   rpcUrl: `https://mainnet.infura.io/v3/${INFURA_ID}`
+    // },
+    // {
+    //   id: '0x3',
+    //   token: 'tROP',
+    //   label: 'Ropsten',
+    //   rpcUrl: `https://ropsten.infura.io/v3/${INFURA_ID}`
+    // },
+    // {
+    //   id: '0x4',
+    //   token: 'rETH',
+    //   label: 'Rinkeby',
+    //   rpcUrl: `https://rinkeby.infura.io/v3/${INFURA_ID}`
+    // },
     {
       id: '0x38',
       token: 'BNB',
@@ -95,17 +96,23 @@ export const initWeb3Onboard = init({
       rpcUrl: 'https://bsc-dataseed.binance.org/'
     },
     {
-      id: '0x89',
-      token: 'MATIC',
-      label: 'Polygon',
-      rpcUrl: 'https://matic-mainnet.chainstacklabs.com'
+      id: '0x61',
+      token: 'tBNB',
+      label: 'BSC Testnet',
+      rpcUrl: 'https://data-seed-prebsc-1-s1.binance.org:8545/'
     },
-    {
-      id: '0xfa',
-      token: 'FTM',
-      label: 'Fantom',
-      rpcUrl: 'https://rpc.ftm.tools/'
-    }
+    // {
+    //   id: '0x89',
+    //   token: 'MATIC',
+    //   label: 'Polygon',
+    //   rpcUrl: 'https://matic-mainnet.chainstacklabs.com'
+    // },
+    // {
+    //   id: '0xfa',
+    //   token: 'FTM',
+    //   label: 'Fantom',
+    //   rpcUrl: 'https://rpc.ftm.tools/'
+    // }
   ],
   appMetadata: {
     name: 'Blocknative Web3-Onboard',
