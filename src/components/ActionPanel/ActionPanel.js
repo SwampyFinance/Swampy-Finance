@@ -11,10 +11,18 @@ const ActionPanel = props => {
     dispatch(headerActions.headerUpdateTrigger(actionType));
   }
 
+  const setBNBAmount = (e) => {
+    dispatch(headerActions.updateBNBAmount(e.target.value));
+  }
+
   return (
     <section className="ActionPanel">
       <div className="Title">
         <div>{title}</div>
+        {
+          actionType == 1 &&
+          <input type='number' onChange={setBNBAmount} placeholder='[Amount]' style={{width: '70px', marginLeft: '10px'}}/>
+        }
       </div>
       <div className="LeftWrapper">
         <button className="Button" onClick={onClick}>{actiontitle}</button>

@@ -17,8 +17,7 @@ import keepkeyModule from '@web3-onboard/keepkey'
 import gnosisModule from '@web3-onboard/gnosis'
 
 // Replace with your DApp's Infura ID
-// const INFURA_ID = 'cea9deb6467748b0b81b920b005c10c1'
-const INFURA_ID = '4a8574b14e614158b243e5e0c31eeea8';
+// const INFURA_ID = '4a8574b14e614158b243e5e0c31eeea8';
 
 const networkId = 4
 const apiUrl = process.env.REACT_APP_API_URL

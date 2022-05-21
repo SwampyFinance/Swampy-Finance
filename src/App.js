@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import VConsole from 'vconsole'
 import Header from './views/Header/Header.js'
 import Footer from './views/Footer/Footer.js'
@@ -13,13 +13,10 @@ if (window.innerWidth < 700) {
 }
 
 const App = () => {
-  const [needHeaderUpdate, setNeedHeaderUpdate] = useState(false);
-  const [actionType, setActionType] = useState(0);
-
 
   return (
     <main>
-      <Header doActionTrigger = {setNeedHeaderUpdate} param = {actionType}/>
+      <Header />
       <section className="main">
         <div className="main-content">
           {/* Information container */}
@@ -62,7 +59,7 @@ const App = () => {
 
             <div className="values-container" style={{marginTop: '30px', padding: '0px 20px'}}>
               <ActionPanel
-                title="Deposit BNB: [5.6]"
+                title="Deposit BNB:"
                 actiontitle="Create Swamp"
                 actionType="1"
               ></ActionPanel>

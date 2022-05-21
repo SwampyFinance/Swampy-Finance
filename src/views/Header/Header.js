@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-import { useConnectWallet, useSetChain, useWallets } from '@web3-onboard/react'
+import { useConnectWallet, useWallets } from '@web3-onboard/react'
 import { ethers } from 'ethers'
 import { initWeb3Onboard, initNotify } from '../../services'
-import { contractAddress, contractAbi, getWeb3 } from '../../contracts'
+import { contractAddress, contractAbi } from '../../contracts'
 import { useDispatch } from 'react-redux'
 import { headerActions } from '../../actions'
 import swal from 'sweetalert';
@@ -15,7 +15,7 @@ import './Header.css'
 let provider;
 
 const Header = () => {
-  const {methodCallType} = useSelector((state) => state.rootReducer.header_reducer);
+  const {methodCallType, bnbAmount} = useSelector((state) => state.rootReducer.header_reducer);
   const [{ wallet }, connect, disconnect ] = useConnectWallet();
   const [currentAccount, setCurrentAccount] = useState('');
   const [swampyContract, setSwampyContract] = useState();
@@ -32,24 +32,42 @@ const Header = () => {
   useEffect(() => {
     if(methodCallType != 0 && currentAccount == ''){
       swal("Warning!", "Please connect wallet.", "warning");
+      setTimeout(()=>{
+        dispatch(headerActions.headerUpdateTrigger(0));
+      })
+      return;
+    } else if(methodCallType == 1 && bnbAmount == 0){
+      swal("Warning!", "Please set deposit bnb amount.", "warning");
+      setTimeout(()=>{
+        dispatch(headerActions.headerUpdateTrigger(0));
+      })
       return;
     }
     console.log(swampyContract);
+    console.log(bnbAmount);
     
     switch(parseInt(methodCallType))
     {
       case 1: // Create Swamp 
+        let overrides = {
+          value: ethers.utils.parseEther(bnbAmount)
+        };
         try{
-          swampyContract.createSwamp(currentAccount)
+          swampyContract.createSwamp(currentAccount, overrides)
           .then(res=>{
             console.log(res);
             console.log("Success Call Create Swamp");
-            swal("Success!", "Create Swamp Successed", "success");
-
+            // swal("Success!", "Create Swamp Successed", "success");
           }).catch(err=>{
-            if(err.code == "4001")
-              swal("Cancelled!", "User denied transaction signature.", "warning");
-
+            switch(parseInt(err.code))
+            {
+              case 4001:
+                swal("Cancelled!", "User denied transaction signature.", "warning");  
+                break;
+              case -32603:
+                swal("Cancelled!", err.data.message, "warning");
+                break;
+            }
             console.log("Some error occured during call Create Swamp contract method: ", err);
           })
         } catch(err) {

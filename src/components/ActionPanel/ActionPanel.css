@@ -17,9 +17,21 @@
 
 .ActionPanel .Title {
   display: flex;
-  flex-direction: column !important;
-  align-items: flex-start !important;
+  /* flex-direction: column !important; */
+  align-items: center !important;
 }
+/* 
+.ActionPanel .Title input {
+  min-height: 33px;
+  background-color: rgba(84, 171, 30, 0.495);
+  color: white;
+  border: none;
+  font-size: 16px;
+  padding-left: 10px;
+  font-weight: bold;
+  width: 50px;
+}  */
+
 
 .ActionPanel .LeftWrapper {
   justify-content: flex-start;

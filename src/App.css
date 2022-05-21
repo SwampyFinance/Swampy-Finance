@@ -29,10 +29,12 @@ input {
 
 input:focus {
   color: white;
+  outline: white;
 }
 
 input::placeholder{
   color: white;
+  font-size: 14px;
 }
 
 
@@ -205,4 +207,18 @@ input::placeholder{
     flex-direction: column;
     margin: 4px auto;
   }
+}
+
+
+/* Hide Spin box for Number Type of Input */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
